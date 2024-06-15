@@ -6,10 +6,10 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
-add_executable(test example/test.c)
+add_executable(colorie_test example/test.c)
 
 add_library(colorie STATIC example/colorie.c)
 
 target_include_directories(colorie PUBLIC include)
-target_include_directories(test PUBLIC include)
-target_link_libraries(test PRIVATE colorie)
+target_include_directories(colorie_test PUBLIC include)
+target_link_libraries(colorie_test PRIVATE colorie)
