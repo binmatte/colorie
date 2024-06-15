@@ -8,7 +8,7 @@ set(CMAKE_C_EXTENSIONS OFF)
 
 add_executable(colorie_test example/test.c)
 
-add_library(colorie STATIC example/colorie.c)
+add_library(colorie STATIC src/colorie.c)
 
 target_include_directories(colorie PUBLIC include)
 target_include_directories(colorie_test PUBLIC include)
