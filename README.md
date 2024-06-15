@@ -2,30 +2,48 @@
 
 This header-only library provides macros for ANSI colors (foreground and background) and text attributes in C programming language. These macros can be used to add color and formatting to text output in terminals that support ANSI escape codes.
 
-# Usage
+# Functions
+## Setting Colors and Attributes
 
-### 1. Including Directly in Your Project
+* `void colorieSetFgColor(CLRColor color);`
+    * Sets the foreground color.
+* `void colorieSetBgColor(CLRColor color);`
+    * Sets the background color.
+* `void colorieSetAttr(CLRAttr attr);`
+    * Sets a text attribute (e.g., bold, italic).
+* `void colorieSetFgExtendedColor(int color);`
+    * Sets the foreground color using an extended palette (0-255).
+* `void colorieSetBgExtendedColor(int color);`
+    * Sets the background color using an extended palette (0-255).
 
-#### Step 1: Download `colorie.h` using `wget`
+## Managing Output
 
-You can download the [colorie.h](include/colorie/old.h) header file using `wget` or `curl`
-```shell
-wget https://raw.githubusercontent.com/binmatte/colorie/main/colorie.h
-```
-
-```c
-#include "colorie.h"
-
-int main(void) {
-    // Use ANSI color and attribute macros here
-    printf(ANSI_FG_GREEN "This text is green!" ANSI_RESET "\n");
-    return 0;
-}
-```
+* `void colorieSetOutputStream(FILE * stream);`
+    * Sets the output stream (default is stdout).
+* `void colorieText(const char * text);`
+    * Prints text to the selected output stream.
+* `void colorieReset(void);`
+    * Resets all colors and attributes to default.
 
 # Example
 
 For additional usage examples, refer to example/test.c in this repository.
+
+```c
+#include <colorie/colorie.h>
+
+int main(void) {
+    // Set foreground color to blue
+    colorieSetFgColor(CLR_BLUE);
+    // Set background color to yellow
+    colorieSetBgColor(CLR_YELLOW);
+    // Print some colored text
+    colorieText("This text is blue on yellow background!\n");
+    // Reset colors to default
+    colorieReset();
+    return 0;
+}
+```
 
 # License
 
